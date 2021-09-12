@@ -2,6 +2,8 @@ const connection = require('./mysql/connection')
 
 const app = require('express')()
 
+app.use(require('cors')())
+
 connection.connect()
 
 app.use('/graphql', require('./graphql'))
