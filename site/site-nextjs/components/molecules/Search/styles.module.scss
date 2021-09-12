@@ -1,0 +1,35 @@
+.container {
+  background-color: #fff;
+  height: 65px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 55px;
+  left: 20px;
+}
+
+.input {
+  height: 100%;
+  padding-left: 80px;
+  background: transparent;
+  font-size: 27px;
+  font-weight: 600;
+  width: 100%;
+  border-radius: 100px;
+  outline: 0;
+  border: 2px solid transparent;
+  transition: border-color ease-in-out 300ms;
+  // transition: box-shadow ease-in-out 300ms;
+
+  &:focus {
+    border: 2px solid #3ba041;
+    // box-shadow: 0px 0 7px 3px #3ba0415c;
+  }
+}

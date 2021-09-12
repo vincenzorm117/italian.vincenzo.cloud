@@ -1,0 +1,20 @@
+.btnGroup {
+  margin: 0 auto;
+  display: flex;
+  border-radius: 100px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #469744;
+}
+
+.btn {
+  background-color: transparent;
+  padding: 10px 25px;
+  border-radius: 100px;
+}
+
+.btnActive {
+  @extend .btn;
+  background-color: #3a7f39;
+}

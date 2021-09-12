@@ -1,0 +1,26 @@
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 48px;
+  color: #8b8b8b;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.input {
+  background-color: #f8f8f8;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 38px;
+  padding: 15px;
+  color: #444444;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+
+  &:focus {
+    outline: #3a7f39 auto 22px;
+  }
+}

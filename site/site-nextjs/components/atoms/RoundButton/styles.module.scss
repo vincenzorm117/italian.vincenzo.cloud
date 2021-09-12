@@ -1,0 +1,98 @@
+%root {
+  cursor: pointer;
+  height: 54px;
+  width: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.edit {
+  @extend %root;
+  background-color: #e4f5e5;
+  transition: background-color linear 100ms;
+
+  :global(svg) {
+    width: 25px;
+    height: auto;
+  }
+
+  :global(svg .path-1),
+  :global(svg .path-2) {
+    transition: fill linear 100ms;
+  }
+
+  &:hover {
+    background-color: #3ba041;
+
+    :global(svg .path-1),
+    :global(svg .path-2) {
+      fill: #fff;
+    }
+  }
+}
+
+.removeRed {
+  @extend %root;
+  background-color: #d31818;
+  transition: background-color linear 300ms;
+
+  :global(svg) {
+    width: 22px;
+    height: auto;
+  }
+
+  &:hover {
+    background-color: darken(#d31818, 5%);
+  }
+}
+
+.save {
+  @extend %root;
+  background-color: #e4f5e5;
+  transition: background-color linear 300ms;
+
+  :global(svg) {
+    width: 22px;
+    height: auto;
+  }
+
+  :global(svg *) {
+    transition: fill linear 100ms;
+  }
+
+  &:hover {
+    background-color: #3a7f39;
+
+    :global(svg .path-1) {
+      fill: #fff;
+    }
+
+    :global(svg .path-2) {
+      fill: #3a7f39;
+    }
+
+    :global(svg .path-3) {
+      fill: #3a7f39;
+    }
+  }
+}
+
+.cancel {
+  @extend %root;
+  height: 54px;
+  width: 54px;
+  background-color: #bebebe;
+  transition: background-color linear 300ms;
+
+  :global(svg) {
+    width: 27px;
+    height: auto;
+  }
+
+  &:hover {
+    background-color: darken(#bebebe, 5%);
+  }
+}
