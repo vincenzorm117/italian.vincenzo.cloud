@@ -20,15 +20,17 @@ module.exports = (gqlArgs, req, gqlParams) =>
             query += ' WHERE id = ?'
             sqlParams.push(gqlArgs.id)
         } else if (gqlArgs.hasOwnProperty('infinitive')) {
-            query += ' WHERE Infinitive like ?'
-            sqlParams.push(`%${gqlArgs.infinitive}%`)
+            query += ' WHERE Infinitive = ?'
+            sqlParams.push(gqlArgs.infinitive)
         }
+
+        query += ' LIMIT 1'
 
         // connection.connect()
 
         connection
             .query(query, sqlParams, function (error, results, fields) {
-                resolve(results)
+                resolve(results[0])
             })
             .on('error', error => {
                 reject(error)

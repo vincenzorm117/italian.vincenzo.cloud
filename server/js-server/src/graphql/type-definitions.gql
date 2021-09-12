@@ -4,6 +4,7 @@
 
 type Query {
     verbs(id: Int, infinitive: String): [Verb]!
+    verb(id: Int, infinitive: String): Verb
 }
 
 type Verb {
@@ -68,4 +69,72 @@ type Verb {
     Imperfect_Subjunctive_noi: String
     Imperfect_Subjunctive_voi: String
     Imperfect_Subjunctive_loro: String
+}
+
+input VerbInput {
+    id: ID!
+    English: String
+    Infinitive: String
+    Participle_Past: String
+    Gerund_Present: String
+
+    Present_io: String
+    Present_tu: String
+    Present_lei: String
+    Present_noi: String
+    Present_voi: String
+    Present_loro: String
+
+    Imperfect_io: String
+    Imperfect_tu: String
+    Imperfect_lei: String
+    Imperfect_noi: String
+    Imperfect_voi: String
+    Imperfect_loro: String
+
+    Future_io: String
+    Future_tu: String
+    Future_lei: String
+    Future_noi: String
+    Future_voi: String
+    Future_loro: String
+
+    Past_io: String
+    Past_tu: String
+    Past_lei: String
+    Past_noi: String
+    Past_voi: String
+    Past_loro: String
+
+    Imperative_io: String
+    Imperative_tu: String
+    Imperative_lei: String
+    Imperative_noi: String
+    Imperative_voi: String
+    Imperative_loro: String
+
+    Conditional_io: String
+    Conditional_tu: String
+    Conditional_lei: String
+    Conditional_noi: String
+    Conditional_voi: String
+    Conditional_loro: String
+
+    Present_Subjunctive_io: String
+    Present_Subjunctive_tu: String
+    Present_Subjunctive_lei: String
+    Present_Subjunctive_noi: String
+    Present_Subjunctive_voi: String
+    Present_Subjunctive_loro: String
+
+    Imperfect_Subjunctive_io: String
+    Imperfect_Subjunctive_tu: String
+    Imperfect_Subjunctive_lei: String
+    Imperfect_Subjunctive_noi: String
+    Imperfect_Subjunctive_voi: String
+    Imperfect_Subjunctive_loro: String
+}
+
+type Mutation {
+    updateVerb(verb: VerbInput): Verb
 }
