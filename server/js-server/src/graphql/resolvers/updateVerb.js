@@ -1,4 +1,4 @@
-const connection = require('../../mysql/connection')
+const { connection } = require('../../mysql/connection')
 const { verbFields } = require('../../core/verbs')
 const { isEmpty } = require('lodash')
 

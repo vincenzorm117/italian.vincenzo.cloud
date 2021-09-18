@@ -8,4 +8,21 @@ const connection = mysql.createConnection({
     database: process.env.SQL_DB,
 })
 
-module.exports = connection
+const query = (query, params = undefined) =>
+    new Promise((resolve, reject) => {
+        if (typeof query !== 'string' || query.length <= 0) {
+            reject(new Error('Query must not be empty.'))
+        } else {
+            connection
+                .query(query, params, (error, results, fields) => {
+                    if (error !== null) {
+                        return reject(error)
+                    }
+                    return resolve(results)
+                })
+                .on('error', error => reject(error))
+        }
+    })
+
+exports.connection = connection
+exports.query = query
