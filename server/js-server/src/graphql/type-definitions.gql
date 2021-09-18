@@ -6,6 +6,8 @@ type Query {
     verbs(infinitive: String, count: Int, offset: Int): VerbPaginator!
 
     verb(id: Int, infinitive: String): Verb
+
+    randomVerbs(count: Int): [Verb]
 }
 
 type Verb {
