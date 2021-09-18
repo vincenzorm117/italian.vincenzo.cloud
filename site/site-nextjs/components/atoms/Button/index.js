@@ -1,17 +1,23 @@
-import styled from "styled-components";
-
-const _Button = styled.div``;
+import styles from "./styles.module.scss";
+import cn from "classnames";
 
 export default function Button({
   theme = "primary",
   children,
   onClick = null,
+  className = "",
 }) {
   const params = {};
+
+  if (styles.hasOwnProperty(theme)) {
+    params.className = cn(className, styles[theme]);
+  } else {
+    params.className = cn(className, styles.primary);
+  }
 
   if (typeof onClick === "function") {
     params.onClick = onClick;
   }
 
-  return <div {...params}>{children}</div>;
+  return <button {...params}>{children}</button>;
 }
