@@ -75,7 +75,7 @@ type Verb {
 }
 
 type VerbPaginator {
-    verbs: [Verb]!
+    list: [Verb]!
     count: Int
     offset: Int
     total: Int

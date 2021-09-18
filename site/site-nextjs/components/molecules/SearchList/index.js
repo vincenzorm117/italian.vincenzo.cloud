@@ -32,7 +32,7 @@ export default function SearchList({ searchTerm = "" }) {
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
-        {data.verbs.map((verb) => (
+        {data.verbs.list.map((verb) => (
           <li key={verb.id} className={styles.item}>
             <Link href={`/reference/${verb.Infinitive}`}>
               {verb.Infinitive}

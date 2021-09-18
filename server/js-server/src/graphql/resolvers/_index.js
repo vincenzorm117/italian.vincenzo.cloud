@@ -1,6 +1,6 @@
 module.exports = {
-    verbs: require('./getVerbs'),
-    verb: require('./getVerb'),
+    verbs: require('./verbs'),
+    verb: require('./verb'),
     updateVerb: require('./updateVerb'),
     randomVerbs: require('./randomVerbs'),
 }

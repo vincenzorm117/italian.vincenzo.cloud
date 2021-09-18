@@ -12,12 +12,12 @@ module.exports = (gqlArgs, req, gqlParams) =>
 
         // Extract fields from the field verbs
         const selections = gqlParams.fieldNodes[0].selectionSet.selections.find(
-            s => s.name.value === 'verbs'
+            s => s.name.value === 'list'
         )
 
         // If no fields are selected return an empty array
         if (!selections) {
-            return resolve({ verbs: [], total, offset: 0 })
+            return resolve({ list: [], total, offset: 0 })
         }
 
         // const { selections } =
@@ -59,10 +59,10 @@ module.exports = (gqlArgs, req, gqlParams) =>
         }
 
         try {
-            const verbs = await mysql.query(query, sqlParams)
+            const list = await mysql.query(query, sqlParams)
             resolve({
-                verbs,
-                count: verbs.length,
+                list,
+                count: list.length,
                 total,
                 offset,
             })
