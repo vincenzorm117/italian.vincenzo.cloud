@@ -17,7 +17,7 @@ module.exports = (gqlArgs, req, gqlParams) =>
 
         // If no fields are selected return an empty array
         if (!selections) {
-            return resolve({ verbs: [], count: 0, offset: 0 })
+            return resolve({ verbs: [], total, offset: 0 })
         }
 
         // const { selections } =
@@ -41,26 +41,15 @@ module.exports = (gqlArgs, req, gqlParams) =>
         }
 
         // [Step] Grab Step and count
-        var count = null,
-            offset = null
+        var count = parseInt(gqlArgs?.count)
+        var offset = parseInt(gqlArgs?.offset)
 
-        if (gqlArgs.hasOwnProperty('count') && /-?\d+/.test(gqlArgs.count)) {
-            count = parseInt(gqlArgs.count)
-            if (isNaN(count) || count < 0) {
-                throw new Error('Argument count must be a non-negative number.')
-            }
+        if (isNaN(count) || count < 0) {
+            count = null
+        }
 
-            if (
-                gqlArgs.hasOwnProperty('offset') &&
-                /-?\d+/.test(gqlArgs.offset)
-            ) {
-                offset = parseInt(gqlArgs.offset)
-                if (isNaN(offset) || offset < 0) {
-                    throw new Error(
-                        'Argument offset must be a non-negative number.'
-                    )
-                }
-            }
+        if (isNaN(offset) || offset < 0) {
+            offset = 0
         }
 
         if (count !== null && offset !== null) {
