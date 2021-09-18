@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { useQuery } from "@apollo/client";
 import { GQL_SEARCH_VERBS } from "./gql";
 
-export default function SearchList({ searchTerm = null }) {
+export default function SearchList({ searchTerm = "" }) {
   if (typeof searchTerm !== "string") {
     return <div className={styles.container}></div>;
   }

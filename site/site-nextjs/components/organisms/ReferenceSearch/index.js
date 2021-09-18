@@ -2,11 +2,9 @@ import styles from "./styles.module.scss";
 import Search from "../../molecules/Search";
 import { useState } from "react";
 import SearchList from "../../molecules/SearchList";
-import client from "../../../services/graphql";
-import searchVerbs from "../../../services/gql/searchVerbs";
 
 export default function ReferenceSearch() {
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className={styles.container}>
