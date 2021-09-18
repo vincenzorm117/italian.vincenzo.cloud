@@ -1,11 +1,30 @@
-const connection = require('../../mysql/connection')
+const mysql = require('../../mysql/connection')
 const { verbFields } = require('../../core/verbs')
 const { isEmpty } = require('lodash')
 
 module.exports = (gqlArgs, req, gqlParams) =>
-    new Promise((resolve, reject) => {
-        const { selections } = gqlParams.fieldNodes[0].selectionSet
-        const sqlFields = selections.map(s => s.name.value)
+    new Promise(async (resolve, reject) => {
+        // [Step] Get total
+        const [{ total }] = await mysql.query(
+            'SELECT COUNT(*) as total FROM Verbs',
+            []
+        )
+
+        // Extract fields from the field verbs
+        const selections = gqlParams.fieldNodes[0].selectionSet.selections.find(
+            s => s.name.value === 'verbs'
+        )
+
+        // If no fields are selected return an empty array
+        if (!selections) {
+            return resolve({ verbs: [], count: 0, offset: 0 })
+        }
+
+        // const { selections } =
+        // gqlParams.fieldNodes[0].selectionSet?.selectionSet
+        const sqlFields = selections.selectionSet.selections.map(
+            s => s.name.value
+        )
 
         const invalidFields = sqlFields.filter(f => !verbFields.has(f))
         if (!isEmpty(invalidFields)) {
@@ -16,23 +35,49 @@ module.exports = (gqlArgs, req, gqlParams) =>
         let query = `SELECT ${sqlFields.join(', ')} FROM Verbs`
         const sqlParams = []
 
-        if (gqlArgs.hasOwnProperty('id')) {
-            query += ' WHERE id = ?'
-            sqlParams.push(gqlArgs.id)
-        } else if (gqlArgs.hasOwnProperty('infinitive')) {
+        if (gqlArgs.hasOwnProperty('infinitive')) {
             query += ' WHERE Infinitive like ?'
             sqlParams.push(`%${gqlArgs.infinitive}%`)
         }
 
-        // connection.connect()
+        // [Step] Grab Step and count
+        var count = null,
+            offset = null
 
-        connection
-            .query(query, sqlParams, function (error, results, fields) {
-                resolve(results)
-            })
-            .on('error', error => {
-                reject(error)
-            })
+        if (gqlArgs.hasOwnProperty('count') && /-?\d+/.test(gqlArgs.count)) {
+            count = parseInt(gqlArgs.count)
+            if (isNaN(count) || count < 0) {
+                throw new Error('Argument count must be a non-negative number.')
+            }
 
-        // connection.end()
+            if (
+                gqlArgs.hasOwnProperty('offset') &&
+                /-?\d+/.test(gqlArgs.offset)
+            ) {
+                offset = parseInt(gqlArgs.offset)
+                if (isNaN(offset) || offset < 0) {
+                    throw new Error(
+                        'Argument offset must be a non-negative number.'
+                    )
+                }
+            }
+        }
+
+        if (count !== null && offset !== null) {
+            query += ` LIMIT ${offset}, ${count}`
+        } else if (count !== null) {
+            query += ` LIMIT ${count}`
+        }
+
+        try {
+            const verbs = await mysql.query(query, sqlParams)
+            resolve({
+                verbs,
+                count: verbs.length,
+                total,
+                offset,
+            })
+        } catch (error) {
+            reject(error)
+        }
     })

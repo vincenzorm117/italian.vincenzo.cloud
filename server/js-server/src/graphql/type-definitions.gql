@@ -3,7 +3,8 @@
 # }
 
 type Query {
-    verbs(id: Int, infinitive: String): [Verb]!
+    verbs(infinitive: String, count: Int, offset: Int): VerbPaginator!
+
     verb(id: Int, infinitive: String): Verb
 }
 
@@ -69,6 +70,13 @@ type Verb {
     Imperfect_Subjunctive_noi: String
     Imperfect_Subjunctive_voi: String
     Imperfect_Subjunctive_loro: String
+}
+
+type VerbPaginator {
+    verbs: [Verb]!
+    count: Int
+    offset: Int
+    total: Int
 }
 
 input VerbInput {
