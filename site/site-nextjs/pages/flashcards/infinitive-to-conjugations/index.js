@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Nav from "../../components/organisms/Nav";
-import FlashcardCategories from "../../components/molecules/FlashcardCategories";
+import Nav from "../../../components/organisms/Nav";
+import ConjugationSelections from "../../../components/organisms/ConjugationSelections";
 
 export default function Page() {
   return (
@@ -10,7 +10,7 @@ export default function Page() {
       </Head>
       <Nav />
       <main>
-        <FlashcardCategories />
+        <ConjugationSelections />
       </main>
     </>
   );
