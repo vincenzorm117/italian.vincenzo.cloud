@@ -1,0 +1,31 @@
+.container {
+}
+
+.inputContainer {
+  cursor: pointer;
+}
+
+.input {
+  cursor: pointer;
+  display: none;
+}
+
+.label {
+  cursor: pointer;
+}
+
+.label:before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid hsl(0deg 0% 85%);
+  margin-right: 16px;
+  transition: all linear 300ms;
+}
+
+.input:checked + .label:before {
+  background-color: #67ba65;
+  border: 2px solid #67ba65;
+}
