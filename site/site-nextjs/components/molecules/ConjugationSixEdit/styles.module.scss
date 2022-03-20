@@ -53,6 +53,11 @@
   white-space: pre;
 }
 
+.value[disabled]:before {
+  content: none;
+  display: none;
+}
+
 .input {
   background-color: #f8f8f8;
   font-style: normal;
