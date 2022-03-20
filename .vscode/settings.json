@@ -9,8 +9,8 @@
     "**/node_modules": true,
     "**/bower_components": true,
     "**/*.code-search": true,
-    "site/out/**": true,
-    "site/.next/**": true
+    "site/site-nextjs/out/**": true,
+    "site/site-nextjs/.next/**": true
   },
   "editor.wordWrap": "bounded"
 }
