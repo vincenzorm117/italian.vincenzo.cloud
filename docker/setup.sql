@@ -65,8 +65,35 @@ CREATE TABLE Verbs (
     Imperfect_Subjunctive_lei varchar(50),
     Imperfect_Subjunctive_noi varchar(50),
     Imperfect_Subjunctive_voi varchar(50),
-    Imperfect_Subjunctive_loro varchar(50),
+    Imperfect_Subjunctive_loro varchar(50)
 );
+
+
+CREATE TABLE Nouns (
+    id int primary key auto_increment,
+    English_Singular varchar(50),
+    English_Plural varchar(50),
+    Italian_Singular varchar(50),
+    Italian_Plural varchar(50)
+);
+
+
+CREATE TABLE Adjectives (
+    id int primary key auto_increment,
+    English_Singular varchar(50),
+    English_Plural varchar(50),
+    Italian_Singular_FEM varchar(50),
+    Italian_Plural_FEM varchar(50),
+    Italian_Singular_MAS varchar(50),
+    Italian_Plural_MAS varchar(50)
+);
+
+CREATE TABLE Adverbs (
+    id int primary key auto_increment,
+    English varchar(50),
+    Italian varchar(50)
+);
+
 
 
 
