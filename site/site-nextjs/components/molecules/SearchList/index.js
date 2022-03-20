@@ -24,7 +24,7 @@ export default function SearchList({ searchTerm = "" }) {
     return (
       <div className={styles.container}>
         <h1 className="py-100">Error</h1>
-        <p>{error}</p>
+        <p>{error.toString()}</p>
       </div>
     );
   }
