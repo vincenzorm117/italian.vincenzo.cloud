@@ -8,7 +8,10 @@ connection.connect()
 
 app.use('/graphql', require('./graphql'))
 
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphql')).on(
-    'close',
-    () => connection.end()
-)
+app.listen(process.env.SERVER_PORT, () => {
+    console.log(
+        `Now browse to http://localhost:${process.env.SERVER_PORT}/graphql`
+    )
+}).on('close', () => {
+    connection.end()
+})
