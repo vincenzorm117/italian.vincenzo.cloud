@@ -4,5 +4,13 @@
     "editor.formatOnSave": false,
     "editor.defaultFormatter": "golang.go"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "site/out/**": true,
+    "site/.next/**": true
+  },
+  "editor.wordWrap": "bounded"
 }
