@@ -14,7 +14,7 @@ export default function Page() {
         <title>{infinitive} - Reference</title>
       </Head>
       <Nav />
-      <main>
+      <main className="pb-60">
         <ReferenceVerbSingleEdit verbInfinitive={infinitive} />
       </main>
     </>
