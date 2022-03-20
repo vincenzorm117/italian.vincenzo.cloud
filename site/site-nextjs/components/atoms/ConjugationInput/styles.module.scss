@@ -1,0 +1,84 @@
+.value {
+  background-color: #f8f8f8;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 38px;
+  color: #444444;
+  flex: 1 1 50%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 70px;
+  position: relative;
+
+  &:before {
+    content: attr(data-pronoun);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 22px;
+    color: #949494;
+    width: 70px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.value[data-pronoun="lei"]:before {
+  content: "lui\Alei";
+  white-space: pre;
+}
+
+.value[disabled]:before {
+  content: none;
+  display: none;
+}
+
+.input {
+  background-color: #f8f8f8;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 38px;
+  padding: 15px 15px 15px 70px;
+
+  &:focus {
+    outline: #3a7f39 auto 22px;
+  }
+}
+
+.solution {
+  color: #d31818;
+  font-style: normal;
+  font-weight: bold;
+  padding: 0 0 0 70px;
+  font-size: 25px;
+  line-height: 25px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.valueSolved {
+  @extend .value;
+}
+
+.inputSolved {
+  @extend .input;
+  padding: 0 0 0 70px;
+  font-size: 25px;
+  line-height: 25px;
+}
+
+.inputContainer {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
