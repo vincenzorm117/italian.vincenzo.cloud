@@ -73,20 +73,29 @@
       Imperfect_Subjunctive,
     },
   };
-  console.log(conjugations);
 
   let keys = Object.keys(conjugations.single);
   let values = Object.values(conjugations.single);
 
   for (const [key, value] of Object.entries(conjugations.multiple)) {
-    for (let i = 0; i < pronouns.length; i++) {
-      keys.push(`${key}_${pronouns[i]}`);
-      values.push(value[i]);
+    if (key === "Imperative") {
+      for (let i = 1; i < pronouns.length; i++) {
+        keys.push(`${key}_${pronouns[i]}`);
+        values.push(value?.[i - 1]?.replace(/'/g, "\\'") ?? "");
+      }
+    } else {
+      for (let i = 0; i < pronouns.length; i++) {
+        keys.push(`${key}_${pronouns[i]}`);
+        values.push(value?.[i]?.replace(/'/g, "\\'") ?? "");
+      }
     }
   }
 
   keys = keys.join(", ");
   values = values.map((x) => `'${x}'`).join(", ");
 
-  console.log(`INSERT INTO Verbs (${keys}) VALUES (${values})`);
+  const q = `INSERT INTO Verbs (${keys}) VALUES (${values})`;
+  console.log(q);
+  // navigator.clipboard.writeText(q);
+  // console.log("Copied");
 })();
