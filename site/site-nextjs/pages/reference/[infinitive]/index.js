@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import RoundButton from "../../../components/atoms/RoundButton";
 import Nav from "../../../components/organisms/Nav";
 import ReferenceVerbSingle from "../../../components/organisms/ReferenceVerbSingle";
 import styles from "./styles.module.scss";
@@ -16,7 +15,7 @@ export default function Page() {
         <title>{infinitive} - Reference</title>
       </Head>
       <Nav />
-      <main>
+      <main className="pb-60">
         <ReferenceVerbSingle verbInfinitive={infinitive} />
       </main>
     </>
