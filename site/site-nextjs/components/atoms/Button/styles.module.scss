@@ -3,25 +3,63 @@
   border-radius: 100px;
   font-size: 20px;
   font-weight: 700;
-  transition: background-color ease-in-out 300ms;
+  transition: background ease-in-out 300ms;
+  user-select: none;
 }
 
 .primary {
   @extend %button;
-  background-color: #469744;
+  background: #469744;
   color: #fff;
+  transition: all 300ms ease-in;
 
   &:hover {
-    background-color: darken(#469744, 10%);
+    background: darken(#469744, 10%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 7px 1px #4697448a;
+    outline: 0;
   }
 }
 
 .grey {
   @extend %button;
-  background-color: #bebebe;
+  background: #bebebe;
   color: #fff;
 
   &:hover {
-    background-color: darken(#bebebe, 10%);
+    background: darken(#bebebe, 10%);
+  }
+}
+
+.brightBlue {
+  @extend %button;
+  background: linear-gradient(55deg, #3a9cee 0%, #235dce 100%);
+  color: #fff;
+  transition: all 300ms ease-in;
+  opacity: 1;
+  box-shadow: 0 0 7px 1px #3a9cee;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+    box-shadow: 0 0 7px 1px #3a9cee;
+    outline: 0;
+  }
+}
+
+.brightGreen {
+  @extend %button;
+  background: linear-gradient(55deg, #3a7f39 0%, #469744 100%);
+  color: #fff;
+  transition: all 300ms ease-in;
+  opacity: 1;
+  box-shadow: 0 0 7px 1px #469744;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+    outline: 0;
   }
 }
