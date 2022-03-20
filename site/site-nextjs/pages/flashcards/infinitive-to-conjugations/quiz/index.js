@@ -1,21 +1,19 @@
-import { useRouter } from "next/router";
-
 import Head from "next/head";
 import Nav from "../../../../components/organisms/Nav";
-import ConjugationSelections from "../../../../components/organisms/ConjugationSelections";
+import VerbQuizzerProvider from "../../../../providers/VerbQuizzerProvider";
+import { QuizServiceFactory } from "../../../../services/QuizService";
+import FlashcardInfinitiveToConjugation from "../../../../components/organisms/FlashcardInfinitiveToConjugation";
 
 export default function Page(...args) {
-  const router = useRouter();
-
-  // console.log(923, router.query.filters.split(","));
-
   return (
-    <>
+    <VerbQuizzerProvider.Provider value={QuizServiceFactory()}>
       <Head>
         <title>Italian Reference</title>
       </Head>
       <Nav />
-      <main></main>
-    </>
+      <main>
+        <FlashcardInfinitiveToConjugation />
+      </main>
+    </VerbQuizzerProvider.Provider>
   );
 }
