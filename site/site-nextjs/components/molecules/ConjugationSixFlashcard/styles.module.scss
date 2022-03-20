@@ -1,0 +1,72 @@
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 48px;
+  color: #8b8b8b;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  column-gap: 8px;
+  row-gap: 8px;
+}
+
+.value {
+  background-color: #f8f8f8;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 38px;
+  // padding: 15px 15px 15px 0;
+  color: #444444;
+  flex: 1 1 50%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 70px;
+  position: relative;
+
+  &:before {
+    content: attr(data-pronoun);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 22px;
+    color: #949494;
+    width: 70px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.values .value:nth-child(5):before {
+  content: "lui\Alei";
+  white-space: pre;
+}
+
+.value[disabled]:before {
+  content: none;
+  display: none;
+}
+
+.input {
+  background-color: #f8f8f8;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 38px;
+  padding: 15px 15px 15px 70px;
+
+  &:focus {
+    outline: #3a7f39 auto 22px;
+  }
+}
