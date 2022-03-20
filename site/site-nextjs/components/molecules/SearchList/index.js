@@ -21,6 +21,7 @@ export default function SearchList({ searchTerm = "" }) {
   }
 
   if (error) {
+    console.error(error);
     return (
       <div className={styles.container}>
         <h1 className="py-100">Error</h1>
