@@ -6,6 +6,7 @@ type Query {
     randomVerbs(count: Int): [Verb]
 
     noun(id: Int): Noun
+    nouns(term: String, count: Int, offset: Int): NounPaginator!
 }
 
 type Mutation {
@@ -159,4 +160,11 @@ type Noun {
     English_Plural: String
     Italian_Singular: String
     Italian_Plural: String
+}
+
+type NounPaginator {
+    list: [Noun]!
+    count: Int
+    offset: Int
+    total: Int
 }

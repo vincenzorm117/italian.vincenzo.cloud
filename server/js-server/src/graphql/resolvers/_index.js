@@ -6,4 +6,5 @@ module.exports = {
     randomVerbs: require('./verbs/random'),
     // Nouns
     noun: require('./nouns/single'),
+    nouns: require('./nouns/multiple'),
 }
