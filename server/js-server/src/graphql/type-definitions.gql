@@ -1,14 +1,19 @@
-# type Query {
-#     hello: String
-# }
+#
 
 type Query {
     verbs(infinitive: String, count: Int, offset: Int): VerbPaginator!
-
     verb(id: Int, infinitive: String): Verb
-
     randomVerbs(count: Int): [Verb]
+
+    noun(id: Int): Noun
 }
+
+type Mutation {
+    updateVerb(verb: VerbInput): Verb
+}
+
+########################################################################
+# Verbs
 
 type Verb {
     id: ID!
@@ -145,6 +150,13 @@ input VerbInput {
     Imperfect_Subjunctive_loro: String
 }
 
-type Mutation {
-    updateVerb(verb: VerbInput): Verb
+########################################################################
+# Nouns
+
+type Noun {
+    id: ID!
+    English_Singular: String
+    English_Plural: String
+    Italian_Singular: String
+    Italian_Plural: String
 }
