@@ -1,4 +1,4 @@
-const { connection } = require('./mysql/connection')
+const { connection } = require('./mysql')
 
 const app = require('express')()
 

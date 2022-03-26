@@ -1,5 +1,5 @@
-const mysql = require('../../mysql/connection')
-const { verbFields } = require('../../core/verbs')
+const mysql = require('../../../mysql')
+const { verbFields } = require('../../../core/verbs')
 const { isEmpty } = require('lodash')
 
 module.exports = (gqlArgs, req, gqlParams) =>
