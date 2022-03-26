@@ -16,8 +16,6 @@ module.exports = (gqlArgs, req, gqlParams) =>
 
         query += ' LIMIT 1'
 
-        console.log(query)
-
         connection
             .query(query, sqlParams, function (error, results, fields) {
                 resolve(results[0])
