@@ -11,6 +11,7 @@ type Query {
 
 type Mutation {
     updateVerb(verb: VerbInput): Verb
+    updateNoun(noun: NounInput): Noun
 }
 
 ########################################################################
@@ -167,4 +168,12 @@ type NounPaginator {
     count: Int
     offset: Int
     total: Int
+}
+
+input NounInput {
+    id: ID!
+    English_Singular: String
+    English_Plural: String
+    Italian_Singular: String
+    Italian_Plural: String
 }
